@@ -1,10 +1,19 @@
-import "./styles.css";
+import React from "react";
+import { render } from "react-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-document.getElementById("app").innerHTML = `
-<h1>Hello Vanilla!</h1>
-<div>
-  We use the same configuration as Parcel to bundle this sandbox, you can find more
-  info about Parcel 
-  <a href="https://parceljs.org" target="_blank" rel="noopener noreferrer">here</a>.
-</div>
-`;
+import BubbleSort from "./bubble-sort";
+
+const App = () => {
+  return (
+    <Router>
+      <Switch>
+        <Route path="/bubble-sort">
+          <BubbleSort />
+        </Route>
+      </Switch>
+    </Router>
+  );
+};
+
+render(<App />, document.getElementById("app"));
