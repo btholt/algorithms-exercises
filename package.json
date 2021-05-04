@@ -1,7 +1,7 @@
 {
-  "name": "vanilla",
+  "name": "algorithms-exercises",
   "version": "1.0.0",
-  "description": "JavaScript example starter project",
+  "description": "The exercises for the Complete Intro to Algorithms",
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html",
@@ -19,8 +19,5 @@
   "resolutions": {
     "@babel/preset-env": "7.13.8"
   },
-  "keywords": [
-    "javascript",
-    "starter"
-  ]
+  "keywords": []
 }
