@@ -10,6 +10,19 @@
   degreesOfSeparation - number   - how many degrees of separation away to look on the graph
 */
 
+/*
+  getUser  - function - a function that returns a user's object given an ID
+
+  example
+
+  {
+    id: 308,
+    name: "Beatrisa Lalor",
+    company: "Youtags",
+    title: "Office Assistant II",
+    connections: [687, 997, 437]
+  }
+*/
 const { getUser } = require("./jobs");
 
 const findMostCommonTitle = (myId, degreesOfSeparation) => {
