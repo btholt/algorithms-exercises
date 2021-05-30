@@ -69,7 +69,7 @@ const findShortestPathLength = (maze, [xA, yA], [xB, yB]) => {
         bQueue.push(neighbor);
       }
     }
-    // logMaze(visited);
+    logMaze(visited);
   }
   return -1;
 };
