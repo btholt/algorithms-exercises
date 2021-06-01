@@ -1,10 +1,14 @@
 import React from "react";
 import _ from "lodash";
 
-const snapshots = [];
+export function clear() {
+  isDone = false;
+  reducedSnapshots = [];
+  snapshots = [];
+}
+
+let snapshots = [];
 export const snapshot = (array) => snapshots.push(Array.from(array));
-export const range = (length) =>
-  Array.apply(null, { length }).map(Number.call, Number);
 let isDone = false;
 let reducedSnapshots = [];
 export const done = () => {
@@ -26,12 +30,7 @@ export const done = () => {
     }
     return accumulator;
   }, []);
-  // ReactDOM.render(
-  //   <App snapshots={reduced} count={snapshots.length} />,
-  //   document.getElementById("target")
-  // );
   isDone = true;
-  // return snapshots.length;
 };
 
 export class App extends React.Component {
@@ -43,7 +42,8 @@ export class App extends React.Component {
 
     return (
       <div>
-        <h1>Comparisons: {snapshots.count}</h1>
+        <h1>Snapshots: {snapshots.length}</h1>
+        <h1>Unique Snapshots: {reducedSnapshots.length}</h1>
         <table>
           <tbody>
             {reducedSnapshots.map((snapshot, index) => (
