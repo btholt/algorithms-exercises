@@ -1,12 +1,18 @@
-import ReactDOM from "react-dom";
 import React from "react";
+import _ from "lodash";
 
-const snapshots = [];
-const snapshot = (array) => snapshots.push(Array.from(array));
-const range = (length) =>
-  Array.apply(null, { length }).map(Number.call, Number);
-const done = () => {
-  let reduced = snapshots.reduce((accumulator, current) => {
+export function clear() {
+  isDone = false;
+  reducedSnapshots = [];
+  snapshots = [];
+}
+
+let snapshots = [];
+export const snapshot = (array) => snapshots.push(Array.from(array));
+let isDone = false;
+let reducedSnapshots = [];
+export const done = () => {
+  reducedSnapshots = snapshots.reduce((accumulator, current) => {
     let shouldAdd = false;
     if (accumulator.length) {
       let prev = accumulator[accumulator.length - 1];
@@ -24,23 +30,23 @@ const done = () => {
     }
     return accumulator;
   }, []);
-  ReactDOM.render(
-    <App snapshots={reduced} count={snapshots.length} />,
-    document.getElementById("target")
-  );
-  return snapshots.length;
+  isDone = true;
 };
 
-class App extends React.Component {
+export class App extends React.Component {
   render() {
-    const max = Math.max.apply(Math, this.props.snapshots[0]);
-    const min = Math.min.apply(Math, this.props.snapshots[0]);
+    if (!isDone) return <h1>You must call `done()` for this to render</h1>;
+
+    const max = _.max(reducedSnapshots[0]);
+    const min = _.min(reducedSnapshots[0]);
+
     return (
       <div>
-        <h1>Comparisons: {this.props.count}</h1>
+        <h1>Snapshots: {snapshots.length}</h1>
+        <h1>Unique Snapshots: {reducedSnapshots.length}</h1>
         <table>
           <tbody>
-            {this.props.snapshots.map((snapshot, index) => (
+            {reducedSnapshots.map((snapshot, index) => (
               <Snapshot max={max} min={min} key={index} data={snapshot} />
             ))}
           </tbody>
