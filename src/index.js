@@ -1,17 +1,22 @@
 import React from "react";
 import { render } from "react-dom";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 
-import BubbleSort from "./bubble-sort";
+import Sort from "./Sort";
 
 const App = () => {
   return (
     <Router>
-      <Switch>
-        <Route path="/bubble-sort">
-          <BubbleSort />
-        </Route>
-      </Switch>
+      <div>
+        <nav>
+          <Link to="/sort">Sort?</Link>
+        </nav>
+        <Switch>
+          <Route path="/sort">
+            <Sort />
+          </Route>
+        </Switch>
+      </div>
     </Router>
   );
 };
