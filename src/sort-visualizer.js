@@ -1,4 +1,5 @@
 import React from "react";
+import _ from "lodash";
 
 const snapshots = [];
 export const snapshot = (array) => snapshots.push(Array.from(array));
@@ -37,8 +38,9 @@ export class App extends React.Component {
   render() {
     if (!isDone) return <h1>You must call `done()` for this to render</h1>;
 
-    const max = Math.max.apply(Math, reducedSnapshots[0]);
-    const min = Math.min.apply(Math, reducedSnapshots[0]);
+    const max = _.max(reducedSnapshots[0]);
+    const min = _.min(reducedSnapshots[0]);
+
     return (
       <div>
         <h1>Comparisons: {snapshots.count}</h1>

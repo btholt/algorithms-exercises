@@ -1,7 +1,10 @@
 import React from "react";
-import { App, snapshot, done, range } from "./sort-visualizer";
+import { shuffle, range } from "lodash";
+import { App, snapshot, done } from "./sort-visualizer";
 
-function bubbleSort(nums) {
+import "./sort.css";
+
+function sort(nums) {
   let swapped = false;
   do {
     swapped = false;
@@ -20,8 +23,7 @@ function bubbleSort(nums) {
 }
 
 export default function Sort() {
-  const sort = bubbleSort(range(0, 100));
-  console.log("sort");
+  sort(shuffle(range(0, 25)));
   done();
   return <App />;
 }
