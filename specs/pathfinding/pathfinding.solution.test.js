@@ -27,7 +27,7 @@ const findShortestPathLength = (maze, [xA, yA], [xB, yB]) => {
   );
   visited[yA][xA].openedBy = BY_A;
   visited[yB][xB].openedBy = BY_B;
-  logMaze(visited);
+  // logMaze(visited);
 
   let aQueue = [visited[yA][xA]];
   let bQueue = [visited[yB][xB]];
@@ -69,7 +69,7 @@ const findShortestPathLength = (maze, [xA, yA], [xB, yB]) => {
         bQueue.push(neighbor);
       }
     }
-    logMaze(visited);
+    // logMaze(visited);
   }
   return -1;
 };
