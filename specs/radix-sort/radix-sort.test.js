@@ -15,7 +15,7 @@ function radixSort(array) {
 
 // unit tests
 // do not modify the below code
-test("radix sort", function () {
+describe("radix sort", function () {
   test.skip("should sort correctly", () => {
     const nums = [
       20,

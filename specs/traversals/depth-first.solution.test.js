@@ -24,7 +24,7 @@ const postorderTraverse = (node, array) => {
 
 // unit tests
 // do not modify the below code
-test("depth-first traversals", function () {
+describe("depth-first traversals", function () {
   const tree = {
     value: 8,
     left: {
@@ -69,7 +69,7 @@ test("depth-first traversals", function () {
     }
   };
 
-  it("preorderTraverse", () => {
+  test("preorderTraverse", () => {
     expect(preorderTraverse(tree, [])).toEqual([
       8,
       4,
@@ -85,7 +85,7 @@ test("depth-first traversals", function () {
     ]);
   });
 
-  it("inorderTraverse", () => {
+  test("inorderTraverse", () => {
     expect(inorderTraverse(tree, [])).toEqual([
       2,
       3,

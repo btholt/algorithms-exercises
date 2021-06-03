@@ -49,7 +49,7 @@ function radixSort(array) {
 
 // unit tests
 // do not modify the below code
-test("radix sort", function () {
+describe("radix sort", function () {
   test("should sort correctly", () => {
     const nums = [
       20,
