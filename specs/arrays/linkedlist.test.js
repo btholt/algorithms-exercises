@@ -45,7 +45,7 @@ class LinkedList {
   _find(index) {
     if (index >= this.length) return null;
     let current = this.head;
-    for (let i = 0; i <= index - 1; i++) {
+    for (let i = 0; i < index; i++) {
       current = current.next;
     }
 
@@ -63,6 +63,7 @@ class LinkedList {
         this.head = head.next;
       } else {
         this.head = null;
+        this.tail = null;
       }
       this.length--;
       return head.value;
