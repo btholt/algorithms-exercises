@@ -15,11 +15,26 @@
 
 function insertionSort(nums) {
   // code goes here
+
+  //outer loop -> traverse through the list
+  //first item is already sorted
+  for (let i = 1; i < nums.length; i++) {
+    let elementToInserted = nums[i];
+    //innerloop -> traverse through the sorted part of the list
+    for (let j = i - 1; j >= 0; j--) {
+      if (nums[j] > elementToInserted) {
+        const temp = nums[j];
+        nums[j] = elementToInserted;
+        nums[j + 1] = temp;
+      }
+    }
+  }
+  return nums;
 }
 
 // unit tests
 // do not modify the below code
-test.skip("insertion sort", function () {
+test("insertion sort", function () {
   const nums = [10, 5, 3, 8, 2, 6, 4, 7, 9, 1];
   insertionSort(nums);
   expect(nums).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
