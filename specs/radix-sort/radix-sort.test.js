@@ -15,8 +15,8 @@ function radixSort(array) {
 
 // unit tests
 // do not modify the below code
-test("radix sort", function () {
-  test.skip("should sort correctly", () => {
+describe.skip("radix sort", function () {
+  it("should sort correctly", () => {
     const nums = [
       20,
       51,
@@ -65,7 +65,7 @@ test("radix sort", function () {
       3001
     ]);
   });
-  test.skip("should sort 99 random numbers correctly", () => {
+  it("should sort 99 random numbers correctly", () => {
     const fill = 99;
     const nums = new Array(fill)
       .fill()
