@@ -14,7 +14,7 @@ function bubbleSort(nums) {
   let swapped = false;
   do {
     swapped = false;
-    for (let i = 0; i < nums.length; i++) {
+    for (let i = 0; i < nums.length - 1; i++) {
       // snapshot(nums);
       if (nums[i] > nums[i + 1]) {
         const temp = nums[i];
