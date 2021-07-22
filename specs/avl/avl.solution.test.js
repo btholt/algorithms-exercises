@@ -82,22 +82,22 @@ class Node {
       const leftLeftHeight = this.left.left ? this.left.left.height : 0;
 
       if (leftRightHeight > leftLeftHeight) {
-        this.left.rotateRR();
+        this.left.rotateLL();
       }
 
-      this.rotateLL();
+      this.rotateRR();
     } else if (rightHeight > leftHeight + 1) {
       const rightRightHeight = this.right.right ? this.right.right.height : 0;
       const rightLeftHeight = this.right.left ? this.right.left.height : 0;
 
       if (rightLeftHeight > rightRightHeight) {
-        this.right.rotateLL();
+        this.right.rotateRR();
       }
 
-      this.rotateRR();
+      this.rotateLL();
     }
   }
-  rotateRR() {
+  rotateLL() {
     const valueBefore = this.value;
     const leftBefore = this.left;
     this.value = this.right.value;
@@ -109,7 +109,7 @@ class Node {
     this.left.updateInNewLocation();
     this.updateInNewLocation();
   }
-  rotateLL() {
+  rotateRR() {
     const valueBefore = this.value;
     const rightBefore = this.right;
     this.value = this.left.value;
