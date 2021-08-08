@@ -10,15 +10,16 @@
 //   index's. Continue looping through until all values are in ascending order
 // */
 
+// attempt 1
 function bubbleSort(nums) {
   let swap = true
   loopCount = 0
   while (swap === true) {
     swapCount = 0
 
-    for (let index = 0; index < nums.length - loopCount; index++) {
-      if (nums[index] > nums[index + 1]) {
-        ;[nums[index], nums[index + 1]] = [nums[index + 1], nums[index]] //swap index
+    for (let i = 0; i < nums.length - loopCount; i++) {
+      if (nums[i] > nums[i + 1]) {
+        ;[nums[i], nums[i + 1]] = [nums[i + 1], nums[i]] //swap index
         swapCount++ // keep track if sorting happened
       }
     }
@@ -34,6 +35,24 @@ function bubbleSort(nums) {
   console.log(nums)
 }
 
+// attemp 2
+function bubbleSort(nums) {
+  let swap = false
+  loopCount = 0
+  do {
+    swap = false
+    for (let i = 0; i < nums.length - loopCount; i++) {
+      if (nums[i] > nums[i + 1]) {
+        ;[nums[i], nums[i + 1]] = [nums[i + 1], nums[i]] //swap index
+        console.log(nums, loopCount)
+        swap = true
+      }
+    }
+    loopCount++
+  } while (swap)
+  return nums
+}
+
 bubbleSort([10, 5, 3, 8, 2, 6, 4, 7, 9, 1])
 
 // unit tests
@@ -43,4 +62,3 @@ test('bubble sort', function () {
   const sortedNums = bubbleSort(nums)
   expect(sortedNums).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 })
-
