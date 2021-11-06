@@ -18,7 +18,7 @@
     "xxhashjs": "0.2.2"
   },
   "devDependencies": {
-    "@babel/core": "7.2.0",
+    "@babel/core": "7.12.0",
     "jest": "^26.6.3"
   },
   "resolutions": {
