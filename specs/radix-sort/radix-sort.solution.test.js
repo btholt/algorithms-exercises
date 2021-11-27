@@ -49,7 +49,7 @@ function radixSort(array) {
 
 // unit tests
 // do not modify the below code
-describe.skip("radix sort", function () {
+describe("radix sort", function () {
   it("should sort correctly", () => {
     const nums = [
       20,
@@ -104,7 +104,7 @@ describe.skip("radix sort", function () {
     const nums = new Array(fill)
       .fill()
       .map(() => Math.floor(Math.random() * 500000));
-    const ans = radixSort(nums);
-    expect(ans).toEqual(nums.sort());
+    const ans = radixSort([...nums]);
+    expect(ans).toEqual(nums.sort((a, b) => a - b));
   });
 });
