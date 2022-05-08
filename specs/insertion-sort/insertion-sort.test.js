@@ -13,14 +13,39 @@
   And you put xdescribe instead of describe if you want to suspend running the unit tests.  
 */
 
-function insertionSort(nums) {
+function insertionSort(nums = []) {
   // code goes here
+  // Iterate over entire arrry picking a number to insert
+  let n = 1;
+  while (n < nums.length) {
+    // Insert it in the correct place in sorted list (left)
+    for (let index = n; index >= 0; index--) {
+      // Swap with prev adjacent element if it is greater
+      if (nums[index] < nums[index - 1]) {
+        const temp = nums[index];
+        nums[index] = nums[index - 1];
+        nums[index - 1] = temp;
+      } else {
+        break;
+      }
+    }
+    n++;
+  }
+
+  console.log({ nums });
 }
 
 // unit tests
 // do not modify the below code
-test.skip("insertion sort", function () {
+test("insertion sort", function () {
   const nums = [10, 5, 3, 8, 2, 6, 4, 7, 9, 1];
   insertionSort(nums);
   expect(nums).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+});
+
+// Another test
+test("insertion sort", function () {
+  const nums = [1, 5, 3, 8, 2, 6, 4, 7, 900, -1];
+  insertionSort(nums);
+  expect(nums).toEqual([-1, 1, 2, 3, 4, 5, 6, 7, 8, 900]);
 });

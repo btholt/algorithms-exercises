@@ -13,12 +13,11 @@ def bubble_sort(nums):
                 swapped = True
     return nums
 
-
 class TestBubbleSort(unittest.TestCase):
     def test_bubble_sort(self):
         nums = [10, 5, 3, 8, 2, 6, 4, 7, 9, 1]
         sorted_nums = bubble_sort(nums)
-        self.assertEqual(nums, sorted_nums)
+        self.assertEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], sorted_nums)
 
 
 if __name__ == '__main__':
