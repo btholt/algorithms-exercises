@@ -9,11 +9,20 @@
  
  */
 
-function nestedAdd(array) {
+function nestedAdd(array = []) {
+  if (array.length === 0) {
+    return 0;
+  }
+
   // write code here
+  if (Array.isArray(array[0])) {
+    return nestedAdd([...array[0], ...array.slice(1)]);
+  } else {
+    return array[0] + nestedAdd(array.slice(1));
+  }
 }
 
-test.skip("nested arrays addition", () => {
+test("nested arrays addition", () => {
   expect(nestedAdd([1, 2, 3])).toEqual(6);
   expect(nestedAdd([1, [2], 3])).toEqual(6);
   expect(nestedAdd([[[[[[[[[5]]]]]]]]])).toEqual(5);
