@@ -14,11 +14,37 @@
 
 function quickSort(nums) {
   // code goes here
+  const divide = (array) => {
+    const pivot = array.pop();
+    const left = [];
+    const right = [];
+    for (let index = 0; index < array.length; index++) {
+      const element = array[index];
+      if (element < pivot) {
+        left.push(element);
+      } else {
+        right.push(element);
+      }
+    }
+
+    return [left, pivot, right];
+  };
+
+  const merge = (left, pivot, right) => {
+    return [...left, pivot, ...right];
+  };
+
+  if (nums.length <= 1) {
+    return nums;
+  }
+
+  const [left, pivot, right] = divide(nums);
+  return merge(quickSort(left), pivot, quickSort(right));
 }
 
 // unit tests
 // do not modify the below code
-test.skip("quickSort", function () {
+test("quickSort", function () {
   const input = [10, 8, 2, 1, 6, 3, 9, 4, 7, 5];
   const answer = quickSort(input);
 
