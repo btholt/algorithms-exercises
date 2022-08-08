@@ -57,13 +57,14 @@ class LinkedList {
     return node.value;
   }
   delete(index) {
+    if (!this.head) return void 0;
     if (index === 0) {
       const head = this.head;
-      if (head) {
-        this.head = head.next;
-      } else {
+      if (this.head == this.tail) {
         this.head = null;
         this.tail = null;
+      } else if (head) {
+        this.head = head.next;
       }
       this.length--;
       return head.value;
@@ -73,7 +74,7 @@ class LinkedList {
     const excise = node.next;
     if (!excise) return null;
     node.next = excise.next;
-    if (!node.next) this.tail = node.next;
+    if (!node.next) this.tail = node;
     this.length--;
     return excise.value;
   }
