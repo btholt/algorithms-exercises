@@ -25,6 +25,7 @@ function bubbleSort(nums) {
     }
   } while (swapped);
   // snapshot(nums);
+  return nums;
 }
 
 // unit tests
