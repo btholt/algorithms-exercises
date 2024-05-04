@@ -1,6 +1,7 @@
 {
     "name": "Node.js",
     "image": "mcr.microsoft.com/devcontainers/typescript-node:16-bullseye",
+    "postCreateCommand": "npm install",
     "customizations": {
         "vscode": {
             "extensions": [
