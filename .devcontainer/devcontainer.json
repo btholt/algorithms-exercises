@@ -1,0 +1,12 @@
+{
+    "name": "Node.js",
+    "image": "mcr.microsoft.com/devcontainers/typescript-node:16-bullseye",
+    "postCreateCommand": "npm i",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "orta.vscode-jest"
+            ]
+        }
+    }
+}
