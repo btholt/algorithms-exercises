@@ -71,6 +71,6 @@ describe.skip("radix sort", function () {
       .fill()
       .map(() => Math.floor(Math.random() * 500000));
     const ans = radixSort(nums);
-    expect(ans).toEqual(nums.sort());
+    expect(ans).toEqual(nums.sort((a,b) => a - b));
   });
 });
