@@ -2,46 +2,60 @@
 // a library called xxhashjs is being loaded (as XXH) and we're using three different
 // instances of that as your hashing functions
 const XXH = require("xxhashjs");
+
 const h1 = (string) =>
   Math.abs(XXH.h32(0xabcd).update(string).digest().toNumber() % 100);
+
 const h2 = (string) =>
   Math.abs(XXH.h32(0x1234).update(string).digest().toNumber() % 100);
+
 const h3 = (string) =>
   Math.abs(XXH.h32(0x6789).update(string).digest().toNumber() % 100);
+
+const getHashes = value => [h1(value), h2(value), h3(value)];
 
 // fill out these two methods
 // `add` adds a string to the bloom filter and returns void (nothing, undefined)
 // `contains` takes a string and tells you if a string is maybe in the bloom filter
 class BloomFilter {
-  // you'll probably need some instance variables
-  add(string) {
-    // code here
+  constructor() {
+    // this.seen = [];
+    this.seen = new Array(100).fill(false);
   }
+  
+  add(string) {
+    getHashes(string).forEach(hash => this.seen[hash] = true)
+  }
+
   contains(string) {
-    // code here
+    return getHashes(string).every(hash => this.seen[hash] === true);
   }
 }
 
 // unit tests
 // do not modify the below code
-describe.skip("BloomFilter", function () {
+describe("BloomFilter", function () {
   let bf;
+
   beforeEach(() => {
     bf = new BloomFilter();
   });
-  test.skip("returns false when empty", () => {
+
+  test("returns false when empty", () => {
     expect(bf.contains("Brian")).toBe(false);
     expect(bf.contains("Sarah")).toBe(false);
     expect(bf.contains("Simona")).toBe(false);
   });
-  test.skip("handles one item", () => {
+
+  test("handles one item", () => {
     expect(bf.contains("Brian")).toBe(false);
     bf.add("Brian");
     expect(bf.contains("Brian")).toBe(true);
     expect(bf.contains("Sarah")).toBe(false);
     expect(bf.contains("Simona")).toBe(false);
   });
-  test.skip("handles many items", () => {
+
+  test("handles many items", () => {
     const names = [
       "Brian",
       "Simona",

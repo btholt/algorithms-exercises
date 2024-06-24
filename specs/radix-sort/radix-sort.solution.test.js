@@ -104,7 +104,7 @@ describe("radix sort", function () {
     const nums = new Array(fill)
       .fill()
       .map(() => Math.floor(Math.random() * 500000));
-    const ans = radixSort(nums);
-    expect(ans).toEqual(nums.sort());
+    const ans = radixSort([...nums]);
+    expect(ans).toEqual(nums.sort((a, b) => a - b));
   });
 });
